@@ -50,11 +50,7 @@ def process_url(url: str, secret: str=OUTPUT_SECRET) -> str:
 
     first_name, last_name = map(lambda x: x.capitalize(), params['B02K_CUSTNAME'][0].split())
 
-    output_hash_str = 'firstname={}&lastname={}#{}'.format(
-        first_name,
-        last_name,
-        secret
-    )
+    output_hash_str = 'firstname={}&lastname={}#{}'.format(first_name, last_name, secret)
     output_hash = sha256(output_hash_str.encode()).hexdigest()
 
     output_params = urlencode(
